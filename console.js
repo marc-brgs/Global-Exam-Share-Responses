@@ -11,11 +11,11 @@ class GlobalExamParser {
 
 			result += exoTitle + "\n";
 			buttons[i].click();
-			await wait(1500);
-			let exoResult = await getExo(false);
+			await this.wait(1500);
+			let exoResult = await this.getExo(false);
 			result += exoResult + "\n";
 			history.back();
-			await wait(1500);
+			await this.wait(1500);
 		}
 		console.log(header + "\n\n" + result);
 	}
@@ -27,7 +27,7 @@ class GlobalExamParser {
 		let result = new String();
 		for(let i = 0; i < buttons.length; i++) {
 			buttons[i].click();
-			await wait(50);
+			await this.wait(50);
 			let correct = document.querySelector("div.flex.flex-col .bg-success-05");
 			let letter = correct.querySelector(".mr-1").textContent;
 			
@@ -38,7 +38,7 @@ class GlobalExamParser {
 		return result;
 	}
 	
-	wait(delay=50) {
+	static wait(delay=50) {
 		return new Promise((resolve) => {
 			setTimeout(() => {
 				resolve(true);
